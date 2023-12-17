@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Services\NeuroService;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class NeuroNationController extends Controller
@@ -19,18 +20,18 @@ class NeuroNationController extends Controller
         $this->neuroService = $neuroService;
     }
 
-    public function getSessionSummary(int $userId)
+    public function getSessionSummary(int $userId) : \Illuminate\Http\Response|\Laravel\Lumen\Http\ResponseFactory
     {
-        return $this->neuroService->getSessionSummary($userId);
+        return response($this->neuroService->getSessionSummary($userId));
     }
 
-    public function getSessionSummaryPerCategory(int $userId)
+    public function getSessionSummaryPerCategory(int $userId) : \Illuminate\Http\Response|\Laravel\Lumen\Http\ResponseFactory
     {
-        return $this->neuroService->getSessionSummaryPerCategory($userId);
+        return response($this->neuroService->getSessionSummaryPerCategory($userId));
     }
-    public function getSessionDate(int $userId, string $identifier)
+    public function getSessionDate(int $userId, string $identifier) : \Illuminate\Http\Response|\Laravel\Lumen\Http\ResponseFactory
     {
-        return $this->neuroService->getSessionDate($userId, $identifier);
+        return response($this->neuroService->getSessionDate($userId, $identifier));
     }
 
 

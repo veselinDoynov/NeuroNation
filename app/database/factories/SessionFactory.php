@@ -2,17 +2,20 @@
 
 namespace Database\Factories;
 
+use App\Models\Course;
+use App\Models\Exercise;
+use App\Models\Session;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class UserFactory extends Factory
+class SessionFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = User::class;
+    protected $model = Session::class;
 
     /**
      * Define the model's default state.
@@ -23,8 +26,11 @@ class UserFactory extends Factory
     {
         return [
             'id' => rand(1,100),
-            'username' => $this->faker->name,
-            'password' => $this->faker->password,
+            'identifier' => $this->faker->name,
+            'score' => 5,
+            'user_id' => User::factory()->make()->id,
+            'course_id' => Course::factory()->make()->id,
+            'exercise_id' => Exercise::factory()->make()->id,
         ];
     }
 }
